@@ -1,6 +1,8 @@
 from elasticsearch import Elasticsearch
 from datetime import datetime
 
+index_name = "dictionary-*"
+
 #User can input custum dictionary
 def insert_data(title, content, url, image, category, who):
     es = Elasticsearch()
@@ -32,7 +34,7 @@ def search_data_content(title, content):
 	    }
     }
 
-    return es.search(index="dictionary-*", body=body)
+    return es.search(index=index_name, body=body)
 
 def search_data_category(title, category):
     es = Elasticsearch()
@@ -48,7 +50,7 @@ def search_data_category(title, category):
 	    }
     }
 
-    return es.search(index="dictionary-*", body=body)
+    return es.search(index=index_name, body=body)
 
 def search_data_who(title, who):
     es = Elasticsearch()
@@ -64,5 +66,5 @@ def search_data_who(title, who):
 	    }
     }
 
-    return es.search(index="dictionary-*", body=body)
+    return es.search(index=index_name, body=body)
 
